@@ -8,6 +8,6 @@
 -->
 ### Mfuns视频外链解析服务
 
-基于 thinkphp6 ，需要 php7 以上环境，目前支持 youku、weibo 视频解析
+基于 thinkphp6 ，需要 php7.4 以上环境，目前支持 youku、weibo 视频解析
 
 前端仓库：https://github.com/ChenDoXiu/MfunsTool
