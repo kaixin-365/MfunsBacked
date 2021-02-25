@@ -2,7 +2,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-23 19:48:36
- * @LastEditTime: 2021-02-24 13:20:21
+ * @LastEditTime: 2021-02-25 17:35:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \think\config\video.php
@@ -18,6 +18,6 @@ return [
   ],
   "weibo"=>[
     "url" => "http://h5.video.weibo.com/api/component?",
-    "user_cookie" => "SINAGLOBAL=8760495364797.231.1614087751500;  wvr=6; webim_unReadCount=%7B%22time%22%3A1614095227794%2C%22dm_pub_total%22%3A0%2C%22chat_group_client%22%3A0%2C%22chat_group_notice%22%3A0%2C%22allcountNum%22%3A24%2C%22msgbox%22%3A0%7D; TC-V-WEIBO-G0=b09171a17b2b5a470c42e2f713edace0; SCF=AoJW_1Rl2fKroaUAkqMIWNVxt4jsJgivJnNW4fmvpTlVxAph_7-0GkPdunWXxO9nfXSP6JRCZUdPFP_8xKlEtuA.; SUB=_2A25NMacODeRhGeFL7VQS9inNzD-IHXVuRp_GrDV8PUJbmtAKLRHRkW9NfcSl7kHMXLCiitowaN5rMRxn6lE8ScOH; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9W5ng2L2psrgj.gXo8gcCpLi5JpX5K-hUgL.FoMfSoq0SoMpS0e2dJLoI7LhIsHVxsvqIP-t; ALF=1645676777; SSOLoginState=1614141278; _s_tentry=weibo.com; Apache=7523115174876.995.1614141429150; ULV=1614141430223:2:2:2:7523115174876.995.1614141429150:1614087751587"
+    "user_cookie" => ""
   ]
 ];

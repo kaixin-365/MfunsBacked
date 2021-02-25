@@ -4,7 +4,7 @@ namespace app\VideoParse;
 /*
  * @Author: ChenDoxiu
  * @Date: 2021-02-24 13:02:57
- * @LastEditTime: 2021-02-24 14:25:02
+ * @LastEditTime: 2021-02-25 17:27:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \think\app\VideoParse\Weibo.php
@@ -23,9 +23,9 @@ class Weibo implements VideoParseInterface
     public function getPlaylist($vid): PlayList
     {
         try {
-          //dump($vid);
+            //dump($vid);
             $json = $this->getPlayJson($vid);
-            //dump($list["data"]["Component_Play_Playinfo"]);
+            //dump($json);
             $json = $json["data"]["Component_Play_Playinfo"]["urls"];
             if (!$json) {
                 throw new \Exception("视频不存在");
@@ -67,7 +67,9 @@ class Weibo implements VideoParseInterface
                 "user-agent: Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Mobile Safari/537.36",
             ),
         ));
-        return json_decode(curl_exec($curl), true);
+        $txt = curl_exec($curl);
+        dump($txt);
+        return json_decode($txt, true);
     }
 
     protected function findNum($str):int

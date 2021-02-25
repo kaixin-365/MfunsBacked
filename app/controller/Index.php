@@ -2,7 +2,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-23 19:28:11
- * @LastEditTime: 2021-02-24 14:28:54
+ * @LastEditTime: 2021-02-25 17:37:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \think\app\controller\Index.php
@@ -23,5 +23,6 @@ class Index extends BaseController
     public function weibo($vid = ""){
         $wb = new Weibo();
         return redirect($wb->getPlaylist($vid)->getVideoBySize(10)->link);
+        //dump($wb->getPlaylist($vid)->getVideoBySize(10));
     }
 }
