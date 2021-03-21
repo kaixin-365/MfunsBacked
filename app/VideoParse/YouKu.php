@@ -9,12 +9,12 @@ use think\facade\Log;
 /*
  * @Author: ChenDoxiu
  * @Date: 2021-02-21 11:50:29
- * @LastEditTime: 2021-02-24 13:51:22
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-03-21 22:27:24
+ * @LastEditors: ChenDoXiu
  * @Description: youku视频解析类
- * @FilePath: \mfunstool\class\Parsing\YouKu.class.php
+ * @FilePath: \MfunsBacked\app\VideoParse\YouKu.php
  */
-class YouKu implements VideoParseInterface{
+class YouKu extends VideoParseInterface{
   private $token; 
   private $time;
   private $cookie;
@@ -30,21 +30,27 @@ class YouKu implements VideoParseInterface{
   {
     //某些时候，视频不存在，会抛出错误，此时直接返回404视频
     try {
-      $json = $this->getPlayJson($vid);
-      $json = $json["data"]["data"]["stream"];
+      $jsonall = $this->getPlayJson($vid->vid);
+      //dump($jsonall);
+      @$json = $jsonall["data"]["data"]["stream"];
       if (!$json) {
         throw new \Exception("视频不存在");
       }
-      
-      $list = PlayList::getPlayListInstance($vid);
+      //匹配获取视频过期时间
+      //dump($json[0]);
+      preg_match("/(?<=expire=)\d+/",$json[0]["m3u8_url"],$matches);
+      //获取视频标题
+      $title = $jsonall['data']["data"]["video"]["title"];
+      $list = PlayList::getPlayListInstance($vid->vid,(int)$matches[0]);
       foreach ($json as $value) {
-        $list->addVideo(Video::getVideoInstance($value["width"]*$value["height"],$value["m3u8_url"],""));
+        $list->addVideo(Video::getInstance($value["width"]*$value["height"],$value["m3u8_url"],$title));
       }
       return $list;
     } catch (\Throwable $th) {
-      Log::write($th);
+      //dump($th);
+      Log::write($th->getMessage());
       $e = new Error();
-      return $e->getPlaylist(404);
+      return $e->getPlaylist($vid);
     }
     
   }

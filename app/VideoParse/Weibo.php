@@ -4,10 +4,10 @@ namespace app\VideoParse;
 /*
  * @Author: ChenDoxiu
  * @Date: 2021-02-24 13:02:57
- * @LastEditTime: 2021-02-25 17:27:59
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-03-21 22:52:37
+ * @LastEditors: ChenDoXiu
  * @Description: In User Settings Edit
- * @FilePath: \think\app\VideoParse\Weibo.php
+ * @FilePath: \MfunsBacked\app\VideoParse\Weibo.php
  */
 
 use think\facade\Log;
@@ -17,34 +17,38 @@ use app\system\VideoInterface\Video;
 use app\system\VideoInterface\PlayList;
 use app\system\VideoInterface\VideoParseInterface;
 
-class Weibo implements VideoParseInterface
+class Weibo extends VideoParseInterface
 {
 
     public function getPlaylist($vid): PlayList
     {
         try {
             //dump($vid);
-            $json = $this->getPlayJson($vid);
-            //dump($json);
-            $json = $json["data"]["Component_Play_Playinfo"]["urls"];
+            $jsonall = $this->getPlayJson($vid->vid);
+            //dump($jsonall);
+            $json = $jsonall["data"]["Component_Play_Playinfo"]["urls"];
             if (!$json) {
                 throw new \Exception("视频不存在");
             }
-
-            $list = PlayList::getPlayListInstance($vid);
+            $title = $jsonall["data"]["Component_Play_Playinfo"]["title"];
+            $list = PlayList::getPlayListInstance($vid->vid,$this->getExpire(current($json)));
             foreach ($json as $key => $value) {
-                $list->addVideo(Video::getVideoInstance($this->findNum($key),$value,$key));
+                $list->addVideo(Video::getInstance($this->findNum($key),$value,$title));
             }
             return $list;
         } catch (\Throwable $th) {
           Log::write((string)$th);
           //dump($th);
           $e = new Error();
-          return $e->getPlaylist(404);
+          return $e->getPlaylist($vid);
         }
     }
+    protected function getExpire($url){
+      preg_match("/(?<=Expires=)\d+/",$url,$matches);
+      return $matches[0] - time();
+    }
 
-    public function getPlayJson($vid = "")
+    public function getPlayJson($vid)
     {
         $curl = curl_init();
         $post = urlencode('{"Component_Play_Playinfo":{"oid":"' . $vid . '"}}');
@@ -68,7 +72,6 @@ class Weibo implements VideoParseInterface
             ),
         ));
         $txt = curl_exec($curl);
-        dump($txt);
         return json_decode($txt, true);
     }
 

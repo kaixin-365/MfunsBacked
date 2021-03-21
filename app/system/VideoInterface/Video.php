@@ -3,10 +3,10 @@ namespace app\system\VideoInterface;
 /*
  * @Author: your name
  * @Date: 2021-02-21 23:37:57
- * @LastEditTime: 2021-02-24 13:52:44
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-03-21 17:39:00
+ * @LastEditors: ChenDoXiu
  * @Description: 视频类
- * @FilePath: \mfunstool\class\Interface\Video.class.php
+ * @FilePath: \MfunsBacked\app\system\VideoInterface\Video.php
  */
 
  class Video{
@@ -29,8 +29,17 @@ namespace app\system\VideoInterface;
      $this->link = $l;
      $this->title = $t;
    }
-
-   public static function getVideoInstance($size,$link,$title){
+   /**
+    * 获取video实例
+    *
+    * @param [type] $size
+    * @param [type] $link
+    * @param [type] $title
+    * @return Video
+    * @Author ChenDoXiu
+    * @DateTime 2021-03-13 10:44:23
+    */
+   public static function getInstance($size,$link,$title){
       return new self($size,$link,$title);
    }
  }
