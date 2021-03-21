@@ -4,7 +4,7 @@ namespace app\VideoParse;
 /*
  * @Author: ChenDoxiu
  * @Date: 2021-02-24 13:02:57
- * @LastEditTime: 2021-03-21 22:52:37
+ * @LastEditTime: 2021-03-22 07:26:03
  * @LastEditors: ChenDoXiu
  * @Description: In User Settings Edit
  * @FilePath: \MfunsBacked\app\VideoParse\Weibo.php
@@ -30,7 +30,8 @@ class Weibo extends VideoParseInterface
             if (!$json) {
                 throw new \Exception("视频不存在");
             }
-            $title = $jsonall["data"]["Component_Play_Playinfo"]["title"];
+            //$title = $jsonall["data"]["Component_Play_Playinfo"]["title"];
+            $title = "";
             $list = PlayList::getPlayListInstance($vid->vid,$this->getExpire(current($json)));
             foreach ($json as $key => $value) {
                 $list->addVideo(Video::getInstance($this->findNum($key),$value,$title));

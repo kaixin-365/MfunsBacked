@@ -4,7 +4,7 @@
  * @Description:
  * @Date: 2021-03-11 19:08:27
  * @LastEditors: ChenDoXiu
- * @LastEditTime: 2021-03-21 22:54:27
+ * @LastEditTime: 2021-03-22 07:27:41
  * @FilePath: \MfunsBacked\app\controller\Index.php
  */
 
@@ -21,14 +21,15 @@ class Index extends BaseController
     {
         $yk = new YouKu();
         //return redirect($yk->getPlaylist($vid)->getVideoBySize(5)->link);
-        redirect($yk->getPlayListUseCache(VideoID::getInstance("Youku",$vid,0))->getVideoBySize(10)->link);
+        return redirect($yk->getPlayListUseCache(VideoID::getInstance("Youku",$vid,0))->getVideoBySize(10)->link);
     }
 
     public function weibo($vid = "")
     {
         $wb = new Weibo();
         //return redirect($wb->getPlaylist(VideoID::getInstance("weibo",$vid,0))->getVideoBySize(10)->link);
-        redirect($wb->getPlayListUseCache(VideoID::getInstance("weibo",$vid,0))->getVideoBySize(10)->link);
+        
+        return redirect($wb->getPlayListUseCache(VideoID::getInstance("weibo",$vid,0))->getVideoBySize(10)->link);
     }
 
 }
