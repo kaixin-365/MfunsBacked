@@ -2,7 +2,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-23 19:48:36
- * @LastEditTime: 2021-03-21 22:04:46
+ * @LastEditTime: 2021-03-25 20:34:14
  * @LastEditors: ChenDoXiu
  * @Description: In User Settings Edit
  * @FilePath: \MfunsBacked\config\video.php
@@ -20,5 +20,9 @@ return [
   "weibo"=>[
     "url" => "http://h5.video.weibo.com/api/component?",
     "user_cookie" => ""
+  ],
+  "bilibili" => [
+    //使用BiliPlus解析api
+    "biliplus_api" => "https://www.biliplus.com/api/geturl?"
   ]
 ];

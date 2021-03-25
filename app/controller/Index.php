@@ -4,7 +4,7 @@
  * @Description:
  * @Date: 2021-03-11 19:08:27
  * @LastEditors: ChenDoXiu
- * @LastEditTime: 2021-03-22 07:27:41
+ * @LastEditTime: 2021-03-25 21:01:28
  * @FilePath: \MfunsBacked\app\controller\Index.php
  */
 
@@ -12,6 +12,7 @@ namespace app\controller;
 
 use app\BaseController;
 use app\system\VideoInterface\VideoID;
+use app\VideoParse\BilibiliAv;
 use app\VideoParse\Weibo;
 use app\VideoParse\YouKu;
 
@@ -30,6 +31,11 @@ class Index extends BaseController
         //return redirect($wb->getPlaylist(VideoID::getInstance("weibo",$vid,0))->getVideoBySize(10)->link);
         
         return redirect($wb->getPlayListUseCache(VideoID::getInstance("weibo",$vid,0))->getVideoBySize(10)->link);
+    }
+    public function bilibiliav($vid = "1700001",$p = 1)
+    {
+        $bi = new BilibiliAv();
+        return redirect($bi->getPlayList(VideoID::getInstance("bilibliav",$vid,$p))->getVideoBySize(10)->link);
     }
 
 }
