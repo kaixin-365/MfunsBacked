@@ -2,12 +2,15 @@
 /*
  * @Author: your name
  * @Date: 2021-02-23 19:48:36
- * @LastEditTime: 2021-03-25 20:34:14
+ * @LastEditTime: 2021-03-31 21:18:26
  * @LastEditors: ChenDoXiu
  * @Description: In User Settings Edit
  * @FilePath: \MfunsBacked\config\video.php
  */
 return [
+  "error" => [
+    "404" => "/404.mp4"
+  ],
   "youku" => [
     "appkey" => "24679788",
     "url"  => "http://acs.youku.com/h5/mtop.youku.play.ups.appinfo.get/1.1/?",

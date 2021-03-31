@@ -4,7 +4,7 @@
  * @Description:
  * @Date: 2021-03-11 19:08:27
  * @LastEditors: ChenDoXiu
- * @LastEditTime: 2021-03-25 21:01:28
+ * @LastEditTime: 2021-03-31 23:47:29
  * @FilePath: \MfunsBacked\app\controller\Index.php
  */
 
@@ -35,7 +35,9 @@ class Index extends BaseController
     public function bilibiliav($vid = "1700001",$p = 1)
     {
         $bi = new BilibiliAv();
-        return redirect($bi->getPlayList(VideoID::getInstance("bilibliav",$vid,$p))->getVideoBySize(10)->link);
+        //$bi->getPlaylist(VideoID::getInstance("bilibliav",$vid,$p));
+        
+        return redirect($bi->getPlayListUseCache(VideoID::getInstance("bilibliav",$vid,$p))->getVideoBySize(10)->link);
     }
 
 }

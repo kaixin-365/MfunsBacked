@@ -4,11 +4,12 @@
  * @Description: 视频列表类
  * @Date: 2021-03-11 19:08:27
  * @LastEditors: ChenDoXiu
- * @LastEditTime: 2021-03-21 19:52:49
+ * @LastEditTime: 2021-03-31 21:23:09
  * @FilePath: \MfunsBacked\app\system\VideoInterface\PlayList.php
  */
 namespace app\system\VideoInterface;
 
+use think\facade\Config;
 use app\system\VideoInterface\Video;
 
 class PlayList
@@ -66,6 +67,12 @@ class PlayList
    * @DateTime 2021-03-13 10:36:05
    */
   function getVideoBySize(int $size){
+    //判断列表是否为空
+
+    if (empty($this->lists)) {
+      return Video::getInstance("0",Config::get("video.error.404"),"404");
+    }
+
     usort($this->lists,fn($a,$b) => $a>$b);
     $leng = count($this->lists) - 1;
     $leng = $leng >= $size ? $size : $leng;
