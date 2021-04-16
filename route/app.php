@@ -2,7 +2,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-23 19:28:11
- * @LastEditTime: 2021-03-31 21:26:55
+ * @LastEditTime: 2021-04-15 21:51:45
  * @LastEditors: ChenDoXiu
  * @Description: In User Settings Edit
  * @FilePath: \MfunsBacked\route\app.php
@@ -21,6 +21,7 @@ use think\facade\Route;
 Route::rule('v1/youku/[:vid]', 'index/youku');
 Route::rule('v1/weibo/[:vid]', 'index/weibo');
 Route::rule('v1/bilibiliav/[:vid]/[:p]', 'index/bilibiliav');
+Route::rule('v1/acfun','index/acfun');
 Route::miss(function() {
   return '404 Not Found!';
 });

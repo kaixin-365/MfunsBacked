@@ -1,7 +1,7 @@
 <!--
  * @Author: chedoxiu
  * @Date: 2021-02-23 19:28:11
- * @LastEditTime: 2021-03-31 23:58:45
+ * @LastEditTime: 2021-04-16 21:31:34
  * @LastEditors: ChenDoXiu
  * @Description: In User Settings Edit
  * @FilePath: \MfunsBacked\README.md
@@ -13,6 +13,8 @@
 前端仓库：https://github.com/ChenDoXiu/MfunsTool
 
 ## 更新
+### 2021/4/16
+增加acfun m3u8 支持
 ### 2021/3/31
 增加了bili MP4支持
 ### 2021/3/21 

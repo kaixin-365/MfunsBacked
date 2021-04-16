@@ -4,7 +4,7 @@
  * @Description:
  * @Date: 2021-03-25 20:05:54
  * @LastEditors: ChenDoXiu
- * @LastEditTime: 2021-03-31 23:52:28
+ * @LastEditTime: 2021-04-16 21:26:57
  * @FilePath: \MfunsBacked\app\VideoParse\BilibiliAv.php
  */
 
@@ -84,7 +84,7 @@ class BilibiliAv extends VideoParseInterface
     protected function getPlayLink(array $token, VideoID $vid)
     {
         $p = array(
-            'url' => $vid->vid,
+            'url' => $vid->vid . "?p=" . $vid->p,
             'go' => '',
             'csrf_token' => $token["token"]
         );

@@ -4,7 +4,7 @@
  * @Description:
  * @Date: 2021-03-11 19:08:27
  * @LastEditors: ChenDoXiu
- * @LastEditTime: 2021-03-31 23:47:29
+ * @LastEditTime: 2021-04-16 21:23:28
  * @FilePath: \MfunsBacked\app\controller\Index.php
  */
 
@@ -12,6 +12,7 @@ namespace app\controller;
 
 use app\BaseController;
 use app\system\VideoInterface\VideoID;
+use app\VideoParse\Acfun;
 use app\VideoParse\BilibiliAv;
 use app\VideoParse\Weibo;
 use app\VideoParse\YouKu;
@@ -38,6 +39,10 @@ class Index extends BaseController
         //$bi->getPlaylist(VideoID::getInstance("bilibliav",$vid,$p));
         
         return redirect($bi->getPlayListUseCache(VideoID::getInstance("bilibliav",$vid,$p))->getVideoBySize(10)->link);
+    }
+    public function acfun($vid = "ac12817280",$p = 1){
+        $ac = new Acfun();
+        return redirect($ac->getPlayListUseCache(VideoID::getInstance("acfun",$vid,$p))->getVideoBySize(10)->link);
     }
 
 }
