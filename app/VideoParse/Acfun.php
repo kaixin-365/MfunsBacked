@@ -39,9 +39,11 @@ class Acfun extends VideoParseInterface
 
     private function getPlayJson(VideoID $vid)
     {
+        //大小写转换防止意外
+        $ac = strtolower($vid->vid);
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://www.acfun.cn/v/{$vid->vid}_{$vid->p}",
+            CURLOPT_URL => "https://www.acfun.cn/v/{$ac}_{$vid->p}",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
